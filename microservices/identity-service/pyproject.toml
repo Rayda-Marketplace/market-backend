@@ -7,7 +7,10 @@ authors = [
     { name = "Cryder", email = "cronyx.developer@gmail.com" }
 ]
 requires-python = ">=3.14"
-dependencies = []
+dependencies = [
+    "pydantic>=2.13.5",
+    "pydantic-settings>=2.15.0",
+]
 
 [project.scripts]
 identity-service = "identity_service:main"
