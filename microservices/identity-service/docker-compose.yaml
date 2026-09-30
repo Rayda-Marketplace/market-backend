@@ -1,0 +1,15 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - environment=dev
+    restart: always
+    volumes:
+      - .:/identity-service
+    env_file:
+      - .env
+    ports:
+      - "${APP_HOST}:${APP_PORT}:50051"
+    command: ["start"]
