@@ -3,3 +3,5 @@
 .gitignore
 .git
 .python-version
+.htmlcov/*
+.coverage

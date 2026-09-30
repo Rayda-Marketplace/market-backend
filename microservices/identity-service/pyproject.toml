@@ -23,6 +23,9 @@ build-backend = "uv_build"
 
 [dependency-groups]
 dev = [
+    "pytest>=9.1.1",
+    "pytest-asyncio>=1.4.0",
+    "pytest-cov>=7.1.0",
     "ruff>=0.16.9",
 ]
 
@@ -59,3 +62,28 @@ quote-style = "double"
 indent-style = "space"
 skip-magic-trailing-comma = false
 line-ending = "auto"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = [
+    "--import-mode=importlib",
+    "--strict-config",
+    "--strict-markers",
+    "--cov=identity_service",
+    "--cov-report=term-missing",
+    "-ra"
+]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+asyncio_default_test_loop_scope = "function"
+
+[tool.coverage.run]
+branch = true
+source = ["identity_service"]
+omit = [
+    "*/identity_service/bootstrap/__main__.py",
+    "*/identity_service/bootstrap/setup.py",
+]
+
+[tool.coverage.report]
+skip_empty = true
